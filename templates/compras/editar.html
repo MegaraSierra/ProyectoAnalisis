@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Compra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='formularios.css') }}">
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #503b3b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .formulario {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .formul, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn-guardar {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-right: 10px; /* Espacio entre botones */
+        }
+
+        .btn-guardar:hover {
+            background-color: #45a049;
+        }
+
+        .boton-retornar {
+            background-color: #4CAF50; /*  */
+            color: white;
+            padding: 10px 20px; /* Tamaño del botón */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px; /* Tamaño de fuente reducido */
+        }
+
+        .boton-retornar:hover {
+            background-color: #0069d9; /* Azul más oscuro */
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" class="formulario">
+        <h3>Editar Compra</h3>
+        
+        <label for="FechaCompra">Fecha de Compra:</label>
+        <input type="date" name="FechaCompra" value="{{ compra[1] }}" required>
+        
+        <label for="ProveedorID">Proveedor:</label>
+        <select name="ProveedorID" required>
+            <option value="">Seleccione un proveedor</option>
+            {% for proveedor in proveedores %}
+                <option value="{{ proveedor[0] }}" {% if proveedor[0] == compra[2] %}selected{% endif %}>{{ proveedor[1] }}</option>
+            {% endfor %}
+        </select>
+        
+        <button class="btn-guardar" type="submit">Guardar</button>
+        <a href="{{ url_for('compras_bp.compras_index') }}" class="boton-retornar">Retornar</a> <!-- Botón de retorno estilizado -->
+    </form>
+</body>
+</html>

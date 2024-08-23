@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Venta</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='formularios.css') }}">
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #503b3b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .formulario {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .formul {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn-guardar {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-right: 10px;
+        }
+
+        .btn-guardar:hover {
+            background-color: #45a049;
+        }
+
+        .boton-retornar {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .boton-retornar:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="{{ url_for('ventas_bp.ventas_editar', id=venta[0]) }}" class="formulario">
+        <h3>Actualizar Venta</h3>
+        
+        <label>ID Venta:</label>
+        <input class="formul" type="text" name="id_venta" value="{{ venta[0] }}" readonly>
+        
+        <label>Fecha:</label>
+        <input class="formul" type="date" name="fecha" value="{{ venta[1] }}" required>
+        
+        <label>Cliente:</label>
+        <input class="formul" type="text" name="cliente" value="{{ venta[2] }}" required>
+        
+        <label>Total:</label>
+        <input class="formul" type="number" name="total" step="0.01" value="{{ venta[3] }}" required>
+        
+        <label>Estado:</label>
+        <input class="formul" type="text" name="estado" value="{{ venta[4] }}" required>
+        
+        <button class="btn-guardar" type="submit">Guardar</button>
+        <a href="{{ url_for('ventas_bp.ventas_index') }}" class="boton-retornar">Retornar</a>
+    </form>
+</body>
+</html>

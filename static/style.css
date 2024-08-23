@@ -1,0 +1,45 @@
+body {
+    text-align: center;
+    background-color: whitesmoke;
+    font-family: Arial;
+}
+
+#main-container {
+    margin: 150px auto;
+    width: 600px;
+}
+
+h1 {
+    display: inline-block;
+    position: relative;
+    font-family: "helvetica";
+    font-size: 70px;
+    color: #17122b;
+}
+
+th {
+    border: solid 1px rgb(0, 0, 0);
+    color: azure;
+    background-color: #17122b;
+    padding: 20px;
+}
+
+td {
+    padding: 15px;
+}
+
+a {
+    color: black;
+}
+
+table {
+    background-color: rgb(255, 255, 255);
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    border: solid 1px rgb(0, 0, 0);
+}
+
+tr:nth-child(even) {
+    background-color: #fff;
+}

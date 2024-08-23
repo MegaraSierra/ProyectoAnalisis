@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #503b3b; /* Color de fondo */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #282c34; /* Color de fondo del encabezado */
+            color: #fff; /* Color del texto del encabezado */
+            padding: 1rem 0;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 1rem; /* Espacio debajo del encabezado */
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #fff; /* Color blanco para el texto del encabezado "Ventas" */
+        }
+
+        table {
+            width: 90%;
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: #fff;
+            border-collapse: collapse; /* Colapsa bordes de la tabla */
+            border: none; /* Elimina el borde de la tabla */
+            box-shadow: none; /* Elimina sombra de la tabla */
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border: none; /* Elimina los bordes de las celdas */
+            border-bottom: 1px solid #ddd; /* Línea debajo de las filas */
+        }
+
+        th {
+            background-color: #f0f0f0; /* Color de fondo para los encabezados de las columnas */
+            color: #000; /* Color negro para el texto de los encabezados */
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center; /* Alinea los elementos verticalmente al centro */
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 1rem; /* Espacio entre el contenedor de botones y la tabla */
+        }
+
+        .add-button, .edit-button, .delete-button {
+            display: flex; /* Para poder alinear el ícono y el texto */
+            align-items: center; /* Alinea verticalmente el ícono y el texto */
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+            margin-right: 10px;
+            font-size: 1rem; /* Tamaño de fuente para el texto del botón */
+        }
+
+        .add-button {
+            background-color: #007bff; /* Color del botón "Agregar" */
+            color: #fff;
+        }
+
+        .add-button:hover {
+            background-color: #0056b3; /* Color del botón "Agregar" al pasar el mouse */
+        }
+
+        .edit-button {
+            background-color: #4CAF50; /* Color del botón "Editar" */
+            color: #fff;
+        }
+
+        .edit-button:hover {
+            background-color: #45a049; /* Color del botón "Editar" al pasar el mouse */
+        }
+
+        .delete-button {
+            background-color: #ad0101; /* Color del botón "Eliminar" */
+            color: #fff;
+        }
+
+        .delete-button:hover {
+            background-color: #ad0101; /* Color del botón "Eliminar" al pasar el mouse */
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Ventas</h1>
+    </header>
+
+    <div class="button-container">
+        <a class="add-button" href="{{ url_for('ventas_bp.ventas_agregar') }}">Agregar</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Acciones</th>
+                <th>ID Venta</th>
+                <th>Fecha</th>
+                <th>Cliente</th>
+                <th>Total</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in lista %}
+            <tr>
+                <td>
+                    <a class="edit-button" href="{{ url_for('ventas_bp.ventas_editar', id=venta[0]) }}">Editar</a>
+                    <a class="delete-button" href="{{ url_for('ventas_bp.ventas_eliminar', id=venta[0]) }}">Eliminar</a>
+                </td>
+                <td>{{ venta[0] }}</td>
+                <td>{{ venta[1] }}</td>
+                <td>{{ venta[2] }}</td>
+                <td>{{ venta[3] }}</td>
+                <td>{{ venta[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

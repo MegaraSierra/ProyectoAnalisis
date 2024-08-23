@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar en Soporte Técnico</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='formularios.css') }}">
+    
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #503b3b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .formulario {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .formul {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .boton {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .boton:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+
+        .boton-retornar {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .boton-retornar:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post" action="/SP/editar/{{SP.0}}" class="formulario">
+        <h3>Editar Solicitud de Soporte Técnico</h3>
+        <label>Código de Solicitud:</label>
+        <input class="formul" type="number" id="SPCodigo" name="SpCodigo" value="{{SP[0]}}" readonly>
+        <label>Fecha:</label>
+        <input class="formul" type="date" id="SpFecha" name="SpFecha" value="{{SP[1]}}" required>
+        <label>Nombre Cliente:</label>
+        <input class="formul" type="text" id="SpCliente" name="SpCliente" value="{{SP[2]}}" required>
+        <label>Equipo:</label>
+        <input class="formul" type="text" id="SPEquipo" name="SpEquipo" value="{{SP[3]}}" required>
+        <label>Marca:</label>
+        <input class="formul" type="text" id="SpMarca" name="SpMarca" value="{{SP[4]}}" required>
+        <label>Cantidad:</label>
+        <input class="formul" type="number" id="SpCantidad" name="SpCantidad" value="{{SP[5]}}" required>
+        <label>Problema:</label>
+        <input class="formul" type="text" id="SpProblema" name="SpProblema" value="{{SP[6]}}" required>
+
+        <input class="boton" type="submit" value="Guardar">
+        <a class="boton-retornar" href="/SP/index">Retornar</a>
+    </form>
+</body>
+
+</html>

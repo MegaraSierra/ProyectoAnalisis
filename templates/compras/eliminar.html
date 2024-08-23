@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Compra</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #503b3b;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px; /* Ancho fijo para el formulario */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .btn-delete {
+            padding: 8px 16px; /* Reducido */
+            font-size: 14px; /* Reducido */
+            color: white;
+            background-color: #ad0101; /* Rojo */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-delete:hover {
+            background-color: #800000; /* Rojo más oscuro */
+        }
+
+        .boton {
+            display: block;
+            margin-top: 10px;
+            color: white;
+            background-color: #007bff; /* Azul */
+            text-decoration: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .boton:hover {
+            text-decoration: underline;
+            background-color: #0069d9; /* Azul más oscuro */
+        }
+
+        /* Icono de basura */
+        .trash-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-top: 3px solid white;
+            border-left: 3px solid white;
+            transform: rotate(45deg);
+            margin-right: 5px;
+        }
+
+        /* Icono de flecha atrás */
+        .back-icon {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-left: 3px solid white;
+            border-bottom: 3px solid white;
+            transform: rotate(-45deg);
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Eliminar Compra</h1>
+        <p>¿Estás seguro de que deseas eliminar la compra con ID {{ compra[0] }}?</p>
+
+        <form method="POST" action="{{ url_for('compras_bp.compras_eliminar', id=compra[0]) }}">
+            <button class="btn-delete" type="submit">
+                <span class="trash-icon"></span> Eliminar
+            </button>
+        </form>
+
+        <a href="{{ url_for('compras_bp.compras_index') }}" class="boton">
+            <span class="back-icon"></span> Regresar
+        </a>
+    </div>
+</body>
+</html>
